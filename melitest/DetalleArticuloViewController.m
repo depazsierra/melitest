@@ -111,7 +111,7 @@
     [self.slideshow setDelay:3]; // Delay between transitions
     [self.slideshow setTransitionDuration:1]; // Transition duration
     [self.slideshow setTransitionType:KASlideShowTransitionFade]; // Choose a transition type (fade or slide)
-    [self.slideshow setImagesContentMode:UIViewContentModeScaleAspectFit]; // Choose a content mode for images to display
+    [self.slideshow setImagesContentMode:UIViewContentModeScaleAspectFill]; // Choose a content mode for images to display
     
     self.slideshow.clipsToBounds = YES;
     

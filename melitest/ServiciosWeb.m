@@ -28,9 +28,9 @@ static NSString *detalleItem = @"/items";
 
 -(void)buscarProductos:(NSString *) textoFiltro completion:(void (^)(NSDictionary * dictionary))completion failedBlock:(void (^)(NSString * error))failed{
     
-    NSMutableString * url = [NSMutableString stringWithFormat:@"%@%@%@",baseURL, consultaURL, textoFiltro];
+    NSMutableString * url = [NSMutableString stringWithFormat:@"%@%@\"%@\"",baseURL, consultaURL, textoFiltro];
     
-    [self GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self GET:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:operation.responseData options:0 error:nil];
         completion(jsonDict);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -40,10 +40,10 @@ static NSString *detalleItem = @"/items";
 
 -(void)buscarProductos:(NSString *) textoFiltro limit:(NSNumber*)limit offset:(NSNumber*)offset completion:(void (^)(NSDictionary * dictionary))completion failedBlock:(void (^)(NSString * error))failed{
     
-    NSMutableString * url = [NSMutableString stringWithFormat:@"%@%@%@&limit=%@&offset=%@",baseURL, consultaURL, textoFiltro,limit,offset];
+    NSMutableString * url = [NSMutableString stringWithFormat:@"%@%@\"%@\"&limit=%@&offset=%@",baseURL, consultaURL, textoFiltro,limit,offset];
     
     
-    [self GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self GET:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:operation.responseData options:0 error:nil];
         completion(jsonDict);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -53,10 +53,10 @@ static NSString *detalleItem = @"/items";
 
 -(void)buscarProductos:(NSString *) textoFiltro offset:(NSNumber*)offset completion:(void (^)(NSDictionary * dictionary))completion failedBlock:(void (^)(NSString * error))failed{
     
-    NSMutableString * url = [NSMutableString stringWithFormat:@"%@%@%@&offset=%@",baseURL, consultaURL, textoFiltro,offset];
+    NSMutableString * url = [NSMutableString stringWithFormat:@"%@%@\"%@\"&offset=%@",baseURL, consultaURL, textoFiltro,offset];
     
     
-    [self GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self GET:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:operation.responseData options:0 error:nil];
         completion(jsonDict);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -66,7 +66,7 @@ static NSString *detalleItem = @"/items";
 
 -(void)detalleProducto:(NSString*)itemId completion:(void (^)(NSDictionary * dictionary))completion failedBlock:(void (^)(NSString * error))failed{
     
-    NSMutableString * url = [NSMutableString stringWithFormat:@"%@%@/%@",baseURL, detalleItem, itemId];
+    NSMutableString * url = [NSMutableString stringWithFormat:@"%@%@\%@",baseURL, detalleItem, itemId];
     
     
     [self GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {

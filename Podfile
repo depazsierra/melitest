@@ -8,6 +8,7 @@ target :melitest do
     pod 'SDWebImage', '~>3.6'
     pod 'MBProgressHUD', '~> 0.8'
     pod 'Reachability'
+    pod 'KASlideShow'
 end
 
 target :melitestTests do

@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "BuscarArticuloViewController.h"
+#import "Common.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[UINavigationBar appearance] setBackgroundColor:[UIColor yellowColor]];
+    
+    BuscarArticuloViewController * vc = [[BuscarArticuloViewController alloc] init];
+    
+    [vc.view setBackgroundColor:RGB(245,242,245)];
+    
+    
+    UINavigationController * nv = [[UINavigationController alloc] initWithRootViewController:vc];
+
+    self.window.rootViewController = nv;
+    
+    
     return YES;
 }
 
